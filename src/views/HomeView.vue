@@ -107,7 +107,7 @@
               </div>
               <p class="car-type">{{ car.type }}</p>
               <div class="car-features-list">
-                <span class="feature-tag" v-for="feature in car.features" :key="feature">{{ feature }}</span>
+                <span class="feature-tag" v-for="feature in car.features.split(', ')" :key="feature">{{ feature }}</span>
               </div>
               <div class="car-footer">
                 <div class="car-price">
@@ -175,16 +175,6 @@ const features = ref([
     title: 'Premium Fleet',
     description: 'Carefully selected luxury vehicles from top manufacturers'
   },
-  /*{
-    icon: '📱',
-    title: 'Mobile App',
-    description: 'Manage your bookings on the go with our intuitive mobile app'
-  },
-  {
-    icon: '🌟',
-    title: '5-Star Service',
-    description: 'Award-winning customer service available 24/7'
-  }*/
 ])
 
 const popularCars = ref([
@@ -196,7 +186,12 @@ const popularCars = ref([
     price: 120,
     emoji: '🚗',
     badge: 'Popular',
-    features: ['Auto', 'GPS', 'Leather']
+    features: 'Automatic, 7 Seats, GPS, Leather, Sunroof',
+    seats: 7,
+    transmission: 'Automatic',
+    fuelType: 'Gasoline',
+    mileage: 'Unlimited',
+    available: true
   },
   { 
     id: 2, 
@@ -206,7 +201,12 @@ const popularCars = ref([
     price: 150,
     emoji: '🚙',
     badge: 'Premium',
-    features: ['Auto', 'Premium', 'Sound']
+    features: 'Automatic, 4 Seats, Premium Sound, Leather, Navigation',
+    seats: 4,
+    transmission: 'Automatic',
+    fuelType: 'Gasoline',
+    mileage: 'Unlimited',
+    available: true
   },
   { 
     id: 3, 
@@ -216,7 +216,12 @@ const popularCars = ref([
     price: 130,
     emoji: '🚘',
     badge: 'New',
-    features: ['Quattro', 'AWD', 'Tech']
+    features: 'Automatic, 4 Seats, Quattro AWD, Premium Interior',
+    seats: 4,
+    transmission: 'Automatic',
+    fuelType: 'Gasoline',
+    mileage: 'Unlimited',
+    available: true
   },
   { 
     id: 4, 
@@ -226,7 +231,12 @@ const popularCars = ref([
     price: 180,
     emoji: '⚡',
     badge: 'Eco',
-    features: ['Electric', 'Autopilot', 'Fast']
+    features: 'Automatic, 4 Seats, Electric, Autopilot, Fast Charging',
+    seats: 4,
+    transmission: 'Automatic',
+    fuelType: 'Electric',
+    mileage: 'Unlimited',
+    available: true
   }
 ])
 
@@ -533,8 +543,10 @@ const viewCar = (carId) => {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .feature-card {
@@ -781,7 +793,8 @@ const viewCar = (carId) => {
   }
   
   .features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
   }
 }
 
@@ -809,6 +822,11 @@ const viewCar = (carId) => {
   
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .feature-card {
+    padding: 1.5rem;
   }
   
   .cars-grid {

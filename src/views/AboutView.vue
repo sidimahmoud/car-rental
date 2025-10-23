@@ -64,10 +64,10 @@
         <div class="contact-section">
           <h2>Get in Touch</h2>
           <div class="contact-info">
-            <div class="contact-item"><strong>Email:</strong> info@carrent.com</div>
-            <div class="contact-item"><strong>Phone:</strong> (555) 123-4567</div>
+            <div class="contact-item"><strong>Email:</strong> sidmah10@gmail.com</div>
+            <div class="contact-item"><strong>Phone:</strong> (222) 33306060</div>
             <div class="contact-item">
-              <strong>Address:</strong> 123 Main Street, City, State 12345
+              <strong>Address:</strong> Worldwide
             </div>
           </div>
         </div>
