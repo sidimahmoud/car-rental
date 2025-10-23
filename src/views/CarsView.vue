@@ -309,30 +309,53 @@ const getCarBadge = (price) => {
 }
 
 .btn {
-  padding: 8px 16px;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
   border-radius: 6px;
+  text-decoration: none;
   font-weight: 600;
+  font-size: 0.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s;
+  border: none;
+  min-height: 32px;
 }
 
 .btn-primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
 }
 
 .btn-secondary {
   background: #6b7280;
   color: white;
+  box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
 }
 
 .btn-secondary:hover {
   background: #4b5563;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(107, 114, 128, 0.4);
+}
+
+.btn-icon {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s;
+}
+
+.btn:hover .btn-icon {
+  transform: translateX(2px);
 }
 
 .cars-grid {
@@ -372,30 +395,82 @@ const getCarBadge = (price) => {
   padding: 1.5rem;
 }
 
-.car-info h3 {
-  font-size: 1.3rem;
+.car-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   margin-bottom: 0.5rem;
-  color: #1f2937;
+}
+
+.car-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+}
+
+.car-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stars {
+  color: #fbbf24;
+  font-size: 0.875rem;
+}
+
+.rating-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 600;
 }
 
 .car-type {
-  color: #6b7280;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.car-features {
-  color: #6b7280;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-  line-height: 1.4;
+.car-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.car-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .car-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.price-amount {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 800;
   color: #059669;
-  margin-bottom: 1rem;
+}
+
+.price-period {
+  font-size: 0.875rem;
+  color: #64748b;
 }
 
 .no-results {

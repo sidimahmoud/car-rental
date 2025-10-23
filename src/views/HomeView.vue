@@ -72,11 +72,15 @@
         </div>
         <div class="features-grid">
           <div class="feature-card" v-for="(feature, index) in features" :key="index">
-            <div class="feature-icon-wrapper">
-              <div class="feature-icon">{{ feature.icon }}</div>
+            <div class="feature-image">
+              <div class="feature-placeholder">{{ feature.icon }}</div>
             </div>
-            <h3 class="feature-title">{{ feature.title }}</h3>
-            <p class="feature-description">{{ feature.description }}</p>
+            <div class="feature-info">
+              <div class="feature-header">
+                <h3 class="feature-name">{{ feature.title }}</h3>
+              </div>
+              <p class="feature-description">{{ feature.description }}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -543,18 +547,18 @@ const viewCar = (carId) => {
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-bottom: 3rem;
 }
 
 .feature-card {
   background: white;
-  padding: 2.5rem;
   border-radius: 20px;
+  overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -563,31 +567,129 @@ const viewCar = (carId) => {
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
 }
 
-.feature-icon-wrapper {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 20px;
+.feature-image {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.feature-placeholder {
+  font-size: 4rem;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+}
+
+.feature-overlay {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.feature-badge {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feature-info {
+  padding: 1.5rem;
+}
+
+.feature-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.feature-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+}
+
+.feature-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stars {
+  color: #fbbf24;
+  font-size: 0.875rem;
+}
+
+.rating-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.feature-type {
+  color: #64748b;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.feature-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-bottom: 1.5rem;
 }
 
-.feature-icon {
-  font-size: 2rem;
+.feature-tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
-.feature-title {
+.feature-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.feature-benefit {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.benefit-text {
   font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: #1a202c;
+  font-weight: 800;
+  color: #059669;
 }
 
-.feature-description {
-  color: #64748b;
-  line-height: 1.6;
+.btn-outline {
+  background: transparent;
+  color: #667eea;
+  border: 2px solid #667eea;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s;
+}
+
+.btn-outline:hover {
+  background: #667eea;
+  color: white;
 }
 
 /* Popular Cars Section */
@@ -822,11 +924,6 @@ const viewCar = (carId) => {
   
   .features-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .feature-card {
-    padding: 1.5rem;
   }
   
   .cars-grid {
